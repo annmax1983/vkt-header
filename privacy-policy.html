@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - vkt-header</title>
+<style>
+  body { max-width: 720px; margin: 40px auto; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; color: #333; }
+  h1 { font-size: 24px; margin-bottom: 8px; }
+  h2 { font-size: 18px; margin-top: 28px; margin-bottom: 8px; color: #555; }
+  p, li { margin: 8px 0; }
+  code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background: #f9f9f9; }
+  .date { color: #888; font-size: 14px; }
+</style>
+</head>
+<body>
+<h1>Privacy Policy</h1>
+<p class="date">Effective date: August 2026</p>
+
+<h2>Overview</h2>
+<p>vkt-header is a browser extension for HTTP header modification during development and testing. <strong>All configuration is stored locally in your browser using <code>chrome.storage.local</code>. No data is uploaded to any server.</strong></p>
+
+<h2>Data Collection</h2>
+<p>vkt-header does NOT collect, transmit, or share any user data. Specifically:</p>
+<ul>
+  <li>❌ No browsing history is collected</li>
+  <li>❌ No network request data is recorded</li>
+  <li>❌ No analytics or telemetry</li>
+  <li>❌ No cookies are read or written</li>
+  <li>❌ No data is sent to any server</li>
+</ul>
+
+<h2>Data Storage</h2>
+<table>
+  <tr><th>Storage Key</th><th>Content</th></tr>
+  <tr><td><code>vkh_templates</code></td><td>Header snapshot templates (name, URL binding, header rules)</td></tr>
+  <tr><td><code>vkh_meta</code></td><td>License status, premium flag</td></tr>
+</table>
+
+<h2>Session Rules</h2>
+<p>vkt-header uses <code>chrome.declarativeNetRequest.updateSessionRules()</code> to modify HTTP request headers. These are <strong>session-level rules only</strong>:</p>
+<ul>
+  <li>Rules exist only during the current browser session</li>
+  <li>All rules are automatically cleared when the browser is closed</li>
+  <li>Rules are isolated per tab — closing a tab removes its rules immediately</li>
+  <li>No persistent network modifications are made</li>
+</ul>
+
+<h2>Permissions</h2>
+<table>
+  <tr><th>Permission</th><th>Reason</th></tr>
+  <tr><td><code>storage</code></td><td>Save header templates and settings locally</td></tr>
+  <tr><td><code>activeTab</code></td><td>Access current tab when user clicks apply</td></tr>
+  <tr><td><code>sidePanel</code></td><td>Display the extension UI in a side panel</td></tr>
+  <tr><td><code>declarativeNetRequestWithHostAccess</code></td><td>Modify HTTP request headers per tab</td></tr>
+  <tr><td><code>tabs</code></td><td>Detect tab close for automatic rule cleanup</td></tr>
+  <tr><td><code>&lt;all_urls&gt;</code></td><td>Required for header modification on any site during debugging</td></tr>
+</table>
+
+<h2>Important Notes</h2>
+<ul>
+  <li>This extension is intended <strong>solely for development and debugging purposes</strong></li>
+  <li>Do not use this extension to bypass website security restrictions</li>
+  <li>Some HTTP headers are protected by the browser and cannot be modified (Host, Origin, etc.)</li>
+  <li>No header modifications are applied automatically — all changes require explicit user action</li>
+</ul>
+
+<h2>Third-Party Services</h2>
+<p>License key validation communicates with <code>api.annmax1983.com</code>. Only the license key, device hash, and plugin ID are sent. No header templates or browsing data are transmitted.</p>
+
+<h2>Data Deletion</h2>
+<p>You can delete templates through the extension UI. Uninstalling the extension removes all stored data. Session rules are automatically cleared on browser restart.</p>
+
+<h2>Contact</h2>
+<p>For questions: <a href="mailto:support@annmax1983.com">support@annmax1983.com</a></p>
+</body>
+</html>
