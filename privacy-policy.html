@@ -36,7 +36,7 @@
 <h2>Data Storage</h2>
 <table>
   <tr><th>Storage Key</th><th>Content</th></tr>
-  <tr><td><code>vkh_templates</code></td><td>Header snapshot templates (name, URL binding, header rules)</td></tr>
+  <tr><td><code>vkh_templates</code></td><td>Header rules (name, domain binding, header rules)</td></tr>
   <tr><td><code>vkh_meta</code></td><td>License status, premium flag</td></tr>
 </table>
 
@@ -45,18 +45,18 @@
 <ul>
   <li>Rules exist only during the current browser session</li>
   <li>All rules are automatically cleared when the browser is closed</li>
-  <li>Rules are isolated per tab — closing a tab removes its rules immediately</li>
+  <li>Enabled rules are re-applied automatically when the browser starts</li>
   <li>No persistent network modifications are made</li>
 </ul>
 
 <h2>Permissions</h2>
 <table>
   <tr><th>Permission</th><th>Reason</th></tr>
-  <tr><td><code>storage</code></td><td>Save header templates and settings locally</td></tr>
-  <tr><td><code>activeTab</code></td><td>Access current tab when user clicks apply</td></tr>
+  <tr><td><code>storage</code></td><td>Save header rules and settings locally</td></tr>
+  <tr><td><code>activeTab</code></td><td>Access the current tab (e.g. to read its URL in the side panel)</td></tr>
   <tr><td><code>sidePanel</code></td><td>Display the extension UI in a side panel</td></tr>
-  <tr><td><code>declarativeNetRequestWithHostAccess</code></td><td>Modify HTTP request headers per tab</td></tr>
-  <tr><td><code>tabs</code></td><td>Detect tab close for automatic rule cleanup</td></tr>
+  <tr><td><code>declarativeNetRequestWithHostAccess</code></td><td>Modify HTTP request headers</td></tr>
+  <tr><td><code>tabs</code></td><td>Read the active tab's URL for the domain tag feature</td></tr>
   <tr><td><code>&lt;all_urls&gt;</code></td><td>Required for header modification on any site during debugging</td></tr>
 </table>
 

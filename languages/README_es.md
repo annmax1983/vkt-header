@@ -1,27 +1,30 @@
 # vkt-header
 [English](../README.md) | [中文](README_zh.md) | Español | [Deutsch](README_de.md) | [日本語](README_ja.md) | [Français](README_fr.md)
 
-Modificador de cabeceras HTTP aislado por pestaña con URL matching para navegadores Chromium.
+Modificador global de cabeceras HTTP para navegadores Chromium. Las reglas coinciden solo por **dominio** (sin distinguir mayúsculas/minúsculas, se ignoran las rutas) y se aplican en **cada pestaña** — sin aislamiento por pestaña ni estado por pestaña.
 
-> Chromium · Manifest V3 · Reglas de sesión · Aislamiento por pestaña · URL Matching
+> Chromium · Manifest V3 · Reglas de sesión · Coincidencia por dominio · Global
 
 ---
 
-## Función principal: URL Matching
+## Función principal: coincidencia por dominio
 
-Cada perfil tiene un campo **Match URL**. Al abrir el panel lateral, se detectan automáticamente los perfiles coincidentes.
+Cada regla tiene un campo **Match URL**, pero solo se usa la parte del **dominio**:
 
-**Prioridad de coincidencia:**
+- Coincidencia **sin distinción de mayúsculas/minúsculas** (`EXAMPLE.COM` = `example.com`)
+- Se ignoran las rutas (`https://example.com/api` se comporta como `example.com`)
+- El `www.` inicial es opcional — `https://www.cnblogs.com/` y `https://cnblogs.com/` coinciden con la misma regla
+- Otros subdominios (`pic.cnblogs.com`, `blog.cnblogs.com`, …) **no** coinciden
+- La regla se aplica en **cada pestaña** a cualquier petición cuyo dominio coincida
+- **Match URL vacío** = la regla se aplica a **todas las peticiones**
 
-| Prioridad | Perfil MatchURL | URL de página | Puntos |
-|---|---|---|---|
-| 🥇 Exacta | `https://api.example.com/v1/users` | `https://api.example.com/v1/users` | 1000 |
-| 🥈 Prefijo de ruta | `https://api.example.com/v1` | `https://api.example.com/v1/users` | 500+ |
-| 🥉 Solo dominio | `https://api.example.com/` | `https://api.example.com/v1/users` | 100 |
+| Lo que escribes | Dominio efectivo | Se aplica a |
+|---|---|---|
+| `example.com` | example.com | todas las peticiones a example.com, cualquier ruta |
+| `HTTPS://EXAMPLE.COM/api` | example.com | igual — la ruta se ignora |
+| *(vacío)* | — | **todas las peticiones** |
 
-- Coincidencia de dominio **sin distinción de mayúsculas/minúsculas**
-- URLs más largas/específicas tienen mayor prioridad
-- Barra verde de **sugerencia** con aplicación en un clic
+Activa cada regla con su interruptor en el panel lateral. El interruptor principal detiene o reanuda todas las reglas.
 
 ---
 
@@ -31,16 +34,14 @@ Cada perfil tiene un campo **Match URL**. Al abrir el panel lateral, se detectan
 |---|---|
 | 🔧 **set / remove** | Establecer o eliminar cabeceras |
 | ✏️ **Editor inline** | Editar directamente en el panel lateral |
-| 📋 **Sistema de perfiles** | Guardar múltiples configuraciones |
-| 🔗 **Vinculación URL** | Vincular perfiles a URLs |
-| 🏷️ **URL Tags** | Clic en dominio/ruta para auto-rellenar |
-| 🎯 **Sugerencia** | Detección automática de perfiles |
-| ⚡ **Presets** | iPhone, Android, iPad, Googlebot, Referer, XFF |
-| 🔒 **Aislamiento** | Estrictamente por tabId |
-| 🧹 **Reglas de sesión** | Se limpian al reiniciar |
+| 📋 **Sistema de reglas** | Guardar múltiples configuraciones |
+| 🌐 **Vinculación por dominio** | Vincular reglas a dominios (sin mayúsculas, rutas ignoradas) |
+| 🌍 **Reglas globales** | Match URL vacío → se aplica a todas las peticiones |
+| 🏷️ **Etiquetas de dominio** | Clic en el dominio actual para autocompletar |
+| 🔘 **Interruptores** | Activar/desactivar cada regla; el interruptor principal detiene todo |
+| 🔗 **Cada pestaña** | Reglas globales — sin aislamiento por pestaña |
+| 🧹 **Reglas de sesión** | Se limpian al reiniciar y se reaplican al iniciar |
 | 📥📤 **Import/Export** | Backup JSON |
-
----
 
 ---
 

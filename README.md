@@ -2,43 +2,47 @@
 
 English | [中文](languages/README_zh.md) | [Español](languages/README_es.md) | [Deutsch](languages/README_de.md) | [日本語](languages/README_ja.md) | [Français](languages/README_fr.md)
 
-Tab-isolated HTTP request header modifier for Chromium browsers. Modify headers per-tab, save profiles with URL matching, auto-cleanup when done.
+Global HTTP request header modifier for Chromium browsers. Rules are matched by **domain only** (case-insensitive, path ignored) and apply to **every tab** — there is no tab isolation and no per-tab state.
 
-> Chromium · Manifest V3 · Session Rules · Tab Isolated · URL Matching
+> Chromium · Manifest V3 · Session Rules · Domain Matching · Global
 
 ---
 
 ## Why vkt-header?
 
-Most header modifiers change headers globally — once set, every tab and every request is affected. vkt-header is different: **rules are strictly bound to the current tab**, and **profiles can be bound to specific URLs** for automatic matching.
+Most header modifiers change headers globally, or require fiddly per-tab state. vkt-header keeps it simple: a rule is matched by the **domain** of the requested URL and applies everywhere, in every tab, the moment it is enabled.
 
 | Advantage | Detail |
 |-----------|--------|
-| 🔒 **Tab Isolation** | Rules only affect the target tab. Closing the tab removes all rules instantly. |
-| 🔗 **URL Matching** | Bind profiles to URLs. 3-level priority: exact match → path prefix → domain. |
-| 🧹 **Auto Cleanup** | Session rules vanish on browser restart. No persistent modifications. |
+| 🌐 **Domain Matching** | Rules match the domain only, case-insensitively. Paths are ignored. |
+| 🔗 **Any Tab** | A rule applies in every tab — nothing is bound to a specific tab. |
+| 🌍 **Global Rules** | Leave the Match URL empty and the rule applies to **all requests**. |
+| 🧹 **Auto Re-apply** | Session rules vanish on browser restart; vkt-header re-applies all enabled rules automatically when the browser starts. |
 | ⚡ **Inline Editing** | Add/edit headers directly in the side panel. No separate editor. |
 | 🎯 **Presets** | One-click presets: iPhone, Android, iPad, Googlebot, Referer, X-Forwarded-For. |
-| 🌍 **6 Languages** | English, 中文, 日本語, Deutsch, Español, Français. |
 
 ---
 
-## Core Feature: URL Matching
+## Core Feature: Domain Matching
 
-Each profile has a **Match URL** field. When you open the side panel on a page, vkt-header automatically finds matching profiles.
+Each rule has a **Match URL** field, but only the **domain** part is used:
 
-**Matching priority (highest first):**
+- Matching is **case-insensitive** (`EXAMPLE.COM` = `example.com`)
+- Paths are ignored (`https://example.com/api` behaves exactly like `example.com`)
+- A leading `www.` is optional — `https://www.cnblogs.com/` and `https://cnblogs.com/` match the same rule
+- Other subdomains (`pic.cnblogs.com`, `blog.cnblogs.com`, …) do **not** match
+- The rule applies in **every tab**, to any request whose domain matches
+- **Empty Match URL** = the rule applies to **all requests**
 
-| Priority | Example Profile MatchURL | Page URL | Score |
-|----------|--------------------------|----------|-------|
-| 🥇 Exact | `https://api.example.com/v1/users` | `https://api.example.com/v1/users` | 1000 |
-| 🥈 Path prefix | `https://api.example.com/v1` | `https://api.example.com/v1/users` | 500+ |
-| 🥉 Domain only | `https://api.example.com/` | `https://api.example.com/v1/users` | 100 |
-| ❌ No match | `https://other.com/` | `https://api.example.com/v1/users` | 0 |
+| What you type | Effective domain | Applies to |
+|---|---|---|
+| `example.com` | example.com | example.com and www.example.com, any path |
+| `HTTPS://EXAMPLE.COM/api` | example.com | same — path is ignored |
+| `https://www.cnblogs.com/` | cnblogs.com | cnblogs.com and www.cnblogs.com |
+| `pic.cnblogs.com` | pic.cnblogs.com | pic.cnblogs.com and www.pic.cnblogs.com only |
+| *(empty)* | — | **all requests** |
 
-- Domain matching is **case-insensitive**
-- Longer/more specific URLs have higher priority
-- A green **Match Hint** bar appears when a matching profile is found — one click to apply
+Enable a rule with its switch in the side panel. The master switch at the top stops or resumes all rules at once.
 
 ---
 
@@ -48,15 +52,15 @@ Each profile has a **Match URL** field. When you open the side panel on a page, 
 |---------|-------------|
 | **Set / Remove headers** | Add, overwrite, or remove any HTTP request header |
 | **Inline editor** | Edit headers directly in the side panel — no popup/panel switching |
-| **Profile system** | Save multiple header configurations as profiles |
-| **URL binding** | Bind profiles to URLs for automatic matching |
-| **URL tags** | Click current page domain/path to auto-fill Match URL |
-| **Match hint** | Auto-detect matching profiles when opening side panel |
+| **Rule system** | Save multiple header configurations as rules |
+| **Domain binding** | Bind rules to a domain (case-insensitive, path ignored) |
+| **Global rules** | Empty Match URL → applies to all requests |
+| **URL tags** | Click the current page's domain to auto-fill the Match URL |
+| **Per-rule switches** | Enable/disable each rule independently; master switch stops everything |
 | **Presets** | Quick-add common headers: Mobile UA, Bot UA, Referer, XFF |
-| **Tab isolation** | Rules strictly bound to tabId — no cross-tab contamination |
-| **Session rules** | `declarativeNetRequest` session rules — auto-clear on browser restart |
-| **Import / Export** | JSON backup and restore of all profiles |
-| **6 languages** | Auto-detected from browser language settings |
+| **Any tab** | Rules are global — no tab isolation, no per-tab toggling |
+| **Session rules** | `declarativeNetRequest` session rules — auto-clear on restart, auto-re-apply on browser start |
+| **Import / Export** | JSON backup and restore of all rules |
 
 ---
 
@@ -77,10 +81,10 @@ Each profile has a **Match URL** field. When you open the side panel on a page, 
 
 | | Free | Premium |
 |---|---|---|
-| Profiles | 5 max | Unlimited |
-| Headers per profile | 5 max | Unlimited |
-| URL matching | ✅ | ✅ |
-| Tab isolation | ✅ | ✅ |
+| Rules | 5 max | Unlimited |
+| Headers per rule | 5 max | Unlimited |
+| Domain matching | ✅ | ✅ |
+| Global rules (empty URL) | ✅ | ✅ |
 | Import / Export | ✅ | ✅ |
 | Presets | ✅ | ✅ |
 
@@ -121,8 +125,8 @@ For your safety, only install vkt-header through official browser extension stor
 
 vkt-header follows privacy-by-design principles:
 
-- ✅ All profiles stored in `chrome.storage.local` — **no data is uploaded to any server**
-- ✅ Session rules auto-clear on browser restart — no persistent modifications
+- ✅ All rules stored in `chrome.storage.local` — **no data is uploaded to any server**
+- ✅ Session rules auto-clear on browser restart and re-apply automatically on browser start
 - ✅ No analytics, no tracking, no cookies
 - ✅ Some headers (Host, Origin) are browser-protected and cannot be modified
 - ✅ For development and debugging purposes only
@@ -131,11 +135,11 @@ vkt-header follows privacy-by-design principles:
 
 | Permission | Reason |
 |------------|--------|
-| `storage` | Save header templates and settings locally |
-| `activeTab` | Access current tab when user clicks apply |
+| `storage` | Save header rules and settings locally |
+| `activeTab` | Access the current tab (e.g. to read its URL in the side panel) |
 | `sidePanel` | Display the extension UI in a side panel |
-| `declarativeNetRequestWithHostAccess` | Modify HTTP request headers per tab |
-| `tabs` | Detect tab close for automatic rule cleanup |
+| `declarativeNetRequestWithHostAccess` | Modify HTTP request headers |
+| `tabs` | Read the active tab's URL for the domain tag feature |
 
 - [Full Privacy Policy](https://annmax1983.github.io/vkt-header/privacy-policy.html)
 
@@ -143,17 +147,20 @@ vkt-header follows privacy-by-design principles:
 
 ## FAQ
 
-1. **Headers don't take effect after applying?**
+1. **Headers don't take effect after enabling a rule?**
    Try refreshing the page. DNR session rules apply to new requests, not already-loaded resources.
 
-2. **Rules disappear after closing the browser?**
-   This is by design. vkt-header uses session rules only — they auto-clear on browser restart for safety.
+2. **Rules disappear after restarting the browser?**
+   Session rules are cleared on restart by design, and vkt-header automatically re-applies all enabled rules when the browser starts.
 
 3. **Some headers can't be modified?**
    Browser-protected headers (Host, Origin, etc.) cannot be modified by extensions. This is a browser security restriction, not a bug.
 
-4. **How do I transfer profiles to another device?**
+4. **How do I transfer rules to another device?**
    Open Settings → Export to download a JSON backup, then Import it on the other device.
+
+5. **The homepage / first navigation doesn't show the header?**
+   DNR rules don't apply to requests served from the browser cache. After enabling a rule, hard-refresh the page (Ctrl+Shift+R) or reopen it — the navigation request will then carry the header. Cached sub-resources behave the same way.
 
 ---
 
@@ -161,7 +168,7 @@ vkt-header follows privacy-by-design principles:
 
 1. This extension modifies HTTP request headers for development and debugging purposes only. All content and services of accessed websites belong to their respective owners.
 2. Users shall not use this extension to bypass website security restrictions, access unauthorized content, or engage in any illegal activities.
-3. Users shall comply with local laws and platform terms of service when using this extension.
+3. Users shall comply with local laws and platform service terms when using this extension.
 
 ---
 

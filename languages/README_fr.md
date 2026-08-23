@@ -1,27 +1,30 @@
 # vkt-header
 [English](../README.md) | [中文](README_zh.md) | [Español](README_es.md) | [Deutsch](README_de.md) | [日本語](README_ja.md) | Français
 
-Modificateur d'en-têtes HTTP isolé par onglet avec URL matching pour navigateurs Chromium.
+Modificateur global d'en-têtes HTTP pour navigateurs Chromium. Les règles correspondent uniquement au **domaine** (insensible à la casse, chemins ignorés) et s'appliquent dans **chaque onglet** — pas d'isolation par onglet ni d'état par onglet.
 
-> Chromium · Manifest V3 · Règles de session · Isolation par onglet · URL Matching
+> Chromium · Manifest V3 · Règles de session · Correspondance par domaine · Global
 
 ---
 
-## Fonctionnalité principale : URL Matching
+## Fonctionnalité principale : correspondance par domaine
 
-Chaque profil a un champ **Match URL**. À l'ouverture du panneau latéral, les profils correspondants sont détectés automatiquement.
+Chaque règle a un champ **Match URL**, mais seule la partie **domaine** est utilisée :
 
-**Priorité de correspondance :**
+- Correspondance **insensible à la casse** (`EXAMPLE.COM` = `example.com`)
+- Les chemins sont ignorés (`https://example.com/api` se comporte comme `example.com`)
+- Le `www.` initial est optionnel — `https://www.cnblogs.com/` et `https://cnblogs.com/` correspondent à la même règle
+- Les autres sous-domaines (`pic.cnblogs.com`, `blog.cnblogs.com`, …) ne correspondent **pas**
+- La règle s'applique dans **chaque onglet** à toute requête dont le domaine correspond
+- **Match URL vide** = la règle s'applique à **toutes les requêtes**
 
-| Priorité | Profil MatchURL | URL de page | Score |
-|---|---|---|---|
-| 🥇 Exacte | `https://api.example.com/v1/users` | `https://api.example.com/v1/users` | 1000 |
-| 🥈 Préfixe chemin | `https://api.example.com/v1` | `https://api.example.com/v1/users` | 500+ |
-| 🥉 Domaine seul | `https://api.example.com/` | `https://api.example.com/v1/users` | 100 |
+| Ce que vous saisissez | Domaine effectif | S'applique à |
+|---|---|---|
+| `example.com` | example.com | toutes les requêtes vers example.com, tout chemin |
+| `HTTPS://EXAMPLE.COM/api` | example.com | identique — le chemin est ignoré |
+| *(vide)* | — | **toutes les requêtes** |
 
-- Correspondance de domaine **insensible à la casse**
-- URLs plus longues/spécifiques = priorité plus élevée
-- Barre verte de **suggestion** avec application en un clic
+Activez chaque règle avec son interrupteur dans le panneau latéral. L'interrupteur principal arrête ou reprend toutes les règles.
 
 ---
 
@@ -31,16 +34,14 @@ Chaque profil a un champ **Match URL**. À l'ouverture du panneau latéral, les 
 |---|---|
 | 🔧 **set / remove** | Définir ou supprimer des en-têtes |
 | ✏️ **Éditeur inline** | Modifier directement dans le panneau latéral |
-| 📋 **Système de profils** | Sauvegarder plusieurs configurations |
-| 🔗 **Liaison URL** | Lier des profils à des URLs |
-| 🏷️ **URL Tags** | Clic sur domaine/chemin pour auto-remplir |
-| 🎯 **Suggestion** | Détection automatique des profils |
-| ⚡ **Presets** | iPhone, Android, iPad, Googlebot, Referer, XFF |
-| 🔒 **Isolation** | Strictement par tabId |
-| 🧹 **Règles de session** | Effacées au redémarrage |
+| 📋 **Système de règles** | Sauvegarder plusieurs configurations |
+| 🌐 **Liaison par domaine** | Lier des règles à des domaines (sans casse, chemins ignorés) |
+| 🌍 **Règles globales** | Match URL vide → s'applique à toutes les requêtes |
+| 🏷️ **Étiquettes de domaine** | Clic sur le domaine actuel pour auto-remplir |
+| 🔘 **Interrupteurs** | Activer/désactiver chaque règle ; l'interrupteur principal arrête tout |
+| 🔗 **Chaque onglet** | Règles globales — pas d'isolation par onglet |
+| 🧹 **Règles de session** | Effacées au redémarrage et réappliquées au démarrage |
 | 📥📤 **Import/Export** | Backup JSON |
-
----
 
 ---
 
