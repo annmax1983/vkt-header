@@ -31,6 +31,7 @@ Each rule has a **Match URL** field, but only the **domain** part is used:
 - Paths are ignored (`https://example.com/api` behaves exactly like `example.com`)
 - A leading `www.` is optional — `https://www.cnblogs.com/` and `https://cnblogs.com/` match the same rule
 - Other subdomains (`pic.cnblogs.com`, `blog.cnblogs.com`, …) do **not** match
+- Optional **Include subdomains** toggle: when enabled, `example.com` also matches every subdomain (`pic.example.com`, `api.example.com`, …)
 - The rule applies in **every tab**, to any request whose domain matches
 - **Empty Match URL** = the rule applies to **all requests**
 
@@ -50,17 +51,20 @@ Enable a rule with its switch in the side panel. The master switch at the top st
 
 | Feature | Description |
 |---------|-------------|
-| **Set / Remove headers** | Add, overwrite, or remove any HTTP request header |
+| **Set / Append / Remove headers** | Overwrite, append to (Cookie, X-Forwarded-For…), or delete any header |
+| **Request & response headers** | Modify request headers and response headers independently per rule |
 | **Inline editor** | Edit headers directly in the side panel — no popup/panel switching |
 | **Rule system** | Save multiple header configurations as rules |
 | **Domain binding** | Bind rules to a domain (case-insensitive, path ignored) |
+| **Include subdomains** | Optional toggle: match every subdomain (`*.example.com`) |
+| **Method filter** | Restrict a rule to one HTTP method (GET, POST, …) or leave it open |
 | **Global rules** | Empty Match URL → applies to all requests |
 | **URL tags** | Click the current page's domain to auto-fill the Match URL |
 | **Per-rule switches** | Enable/disable each rule independently; master switch stops everything |
 | **Presets** | Quick-add common headers: Mobile UA, Bot UA, Referer, XFF |
 | **Any tab** | Rules are global — no tab isolation, no per-tab toggling |
 | **Session rules** | `declarativeNetRequest` session rules — auto-clear on restart, auto-re-apply on browser start |
-| **Import / Export** | JSON backup and restore of all rules |
+| **Import / Export** | JSON backup and restore of all rules *(Premium)* |
 
 ---
 
@@ -85,7 +89,7 @@ Enable a rule with its switch in the side panel. The master switch at the top st
 | Headers per rule | 5 max | Unlimited |
 | Domain matching | ✅ | ✅ |
 | Global rules (empty URL) | ✅ | ✅ |
-| Import / Export | ✅ | ✅ |
+| Import / Export | ❌ Premium only | ✅ |
 | Presets | ✅ | ✅ |
 
 ---
@@ -161,6 +165,9 @@ vkt-header follows privacy-by-design principles:
 
 5. **The homepage / first navigation doesn't show the header?**
    DNR rules don't apply to requests served from the browser cache. After enabling a rule, hard-refresh the page (Ctrl+Shift+R) or reopen it — the navigation request will then carry the header. Cached sub-resources behave the same way.
+
+6. **Headers missing right after the browser starts?**
+   The service worker wakes lazily: the very first requests can fire before vkt-header has re-applied its session rules. Retry or refresh — every subsequent navigation carries the headers. This only affects the first moments after browser startup, not normal browsing.
 
 ---
 
