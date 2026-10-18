@@ -64,7 +64,23 @@ Enable a rule with its switch in the side panel. The master switch at the top st
 | **Presets** | Quick-add common headers: Mobile UA, Bot UA, Referer, XFF |
 | **Any tab** | Rules are global — no tab isolation, no per-tab toggling |
 | **Session rules** | `declarativeNetRequest` session rules — auto-clear on restart, auto-re-apply on browser start |
+| **Request tester** | Enter any URL and see which rules match it, which headers each rule would set, and which rule wins when priorities collide — before you browse |
+| **Toolbar badge** | The toolbar icon shows how many rules are currently active, at a glance |
+| **Migrate from ModHeader / Header Editor** | Import their exported JSON files — see [Migration import](#migrating-from-modheader--header-editor) |
 | **Import / Export** | JSON backup and restore of all rules *(Premium)* |
+
+Enable a rule with its switch in the side panel. The master switch at the top stops or resumes all rules at once. To check what a rule will actually do, open the **request tester** (🔍 in the panel header): it runs a URL through the same matching logic the extension uses, and shows every header the final request/response would carry.
+
+---
+
+## Migrating from ModHeader / Header Editor
+
+vkt-header reads the export/backup JSON files of both ModHeader and Header Editor (open **Settings → Import** in vkt-header and pick the file):
+
+- **Carries over**: domains (including subdomain toggles), request and response headers, set/append/remove operations, method filters
+- **Reported, never silently dropped**: rules bound to a tab, window or time window, redirects, response-body rewrites and custom functions have no equivalent here — the import tells you exactly what was skipped
+- **Safe by default**: imported rules start **disabled**, and headers are never widened to "all sites" when the original scope can't be mapped — review the imported rules and switch on the ones you want
+- **Toolbar badge**: after enabling, the toolbar icon shows how many rules are live
 
 ---
 
@@ -89,6 +105,8 @@ Enable a rule with its switch in the side panel. The master switch at the top st
 | Headers per rule | 5 max | Unlimited |
 | Domain matching | ✅ | ✅ |
 | Global rules (empty URL) | ✅ | ✅ |
+| Request tester · toolbar badge | ✅ | ✅ |
+| Migrate from ModHeader / Header Editor | ✅ (free quota) | ✅ |
 | Import / Export | ❌ Premium only | ✅ |
 | Presets | ✅ | ✅ |
 
@@ -129,7 +147,7 @@ For your safety, only install vkt-header through official browser extension stor
 
 vkt-header follows privacy-by-design principles:
 
-- ✅ All rules stored in `chrome.storage.local` — **no data is uploaded to any server**
+- ✅ All rules stored in `chrome.storage.local` — **your rules are never uploaded — the only request is optional license validation**
 - ✅ Session rules auto-clear on browser restart and re-apply automatically on browser start
 - ✅ No analytics, no tracking, no cookies
 - ✅ Some headers (Host, Origin) are browser-protected and cannot be modified

@@ -39,9 +39,9 @@
   <tr><td><code>vkh_templates</code></td><td>Header rules (name, domain binding, header rules)</td></tr>
   <tr><td><code>vkh_meta</code></td><td>License status, premium flag</td></tr>
   <tr><td><code>vkh_master</code></td><td>Master on/off switch for all rules</td></tr>
-  <tr><td><code>vkh_global_device_id</code></td><td>Per-install device identifier used for license activation</td></tr>
+  <tr><td><code>vkt_install_id</code></td><td>Random per-installation identifier used for license activation</td></tr>
   <tr><td><code>vkt_license_vktheader</code></td><td>Activated license record (key, status, expiry date)</td></tr>
-  <tr><td><code>vkt_last_validate_vktheader</code></td><td>Timestamp of the last successful license validation (offline grace period)</td></tr>
+  <tr><td><code>vkt_last_validate_vktheader</code></td><td>Timestamp of the last successful license validation</td></tr>
 </table>
 
 <h2>Session Rules</h2>
@@ -76,10 +76,10 @@
 <p>License key activation and validation communicate with <code>api.annmax1983.com</code>. The request contains only:</p>
 <ul>
   <li>The license key you entered and the plugin identifier</li>
-  <li>A device identifier derived by hashing your platform, CPU core count, device memory and touch-point count — the raw values themselves are never sent</li>
+  <li>A random install identifier generated locally on first activation — no device information is collected, hashed, or derived</li>
   <li>Basic request metadata: browser name and major version, browser language, timezone, and user agent string</li>
 </ul>
-<p>No header rules, no browsing history and no page content are ever transmitted. This request is made only when you activate a license or while a license is being re-validated; with no license activated, the extension makes no network requests at all.</p>
+<p>No header rules, no browsing history and no page content are ever transmitted. This request is made only when you activate a license or while a license is being re-validated; with no license activated, the extension makes no network requests at all. Our license server records the IP address of these requests solely for rate limiting and abuse prevention — never for profiling, advertising, or sharing with third parties.</p>
 
 <h2>Data Deletion</h2>
 <p>You can delete templates through the extension UI. Uninstalling the extension removes all stored data. Session rules are automatically cleared on browser restart.</p>

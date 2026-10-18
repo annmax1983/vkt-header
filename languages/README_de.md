@@ -129,7 +129,7 @@ Zu deiner Sicherheit: Installiere vkt-header ausschließlich über offizielle Br
 
 vkt-header folgt den Prinzipien von Privacy-by-Design:
 
-- ✅ Alle Regeln in `chrome.storage.local` gespeichert — **keine Daten werden auf einen Server hochgeladen**
+- ✅ Alle Regeln in `chrome.storage.local` gespeichert — **keine Regeln werden hochgeladen; die einzige Anfrage ist die optionale Lizenzprüfung**
 - ✅ Session Rules werden beim Browser-Neustart automatisch gelöscht und beim Browser-Start wieder angewendet
 - ✅ Keine Analytik, kein Tracking, keine Cookies
 - ✅ Einige Header (Host, Origin) sind browser-geschützt und können nicht verändert werden

@@ -129,7 +129,7 @@ Por tu seguridad, instala vkt-header solo a través de las tiendas oficiales de 
 
 vkt-header sigue principios de privacidad desde el diseño:
 
-- ✅ Todas las reglas se almacenan en `chrome.storage.local` — **no se suben datos a ningún servidor**
+- ✅ Todas las reglas se almacenan en `chrome.storage.local` — **las reglas nunca se suben; la única petición es la validación opcional de la licencia**
 - ✅ Las session rules se borran al reiniciar el navegador y se vuelven a aplicar automáticamente al iniciar el navegador
 - ✅ Sin analíticas, sin rastreo, sin cookies
 - ✅ Algunas cabeceras (Host, Origin) están protegidas por el navegador y no pueden modificarse
