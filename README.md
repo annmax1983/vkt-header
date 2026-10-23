@@ -115,7 +115,7 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 ## Preview
 
 <p align="center">
-  <img src="screenshot/preview.png" alt="vkt-header Preview" width="640">
+  <img src="screenshots/promo.png" alt="vkt-header Preview" width="640">
 </p>
 
 ---
@@ -132,14 +132,12 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 
 ## Installation
 
-For your safety, only install vkt-header through official browser extension stores:
+| Store | Link |
+|---|---|
+| Chrome Web Store | Coming soon 🚧 |
+| Microsoft Edge Add-ons | [Install for Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
 
-1. Open **Chrome Web Store** or **Microsoft Edge Add-ons**
-2. Search: `vkt-header`
-3. Click **"Add to Chrome"** / **"Add to Edge"**
-4. Click the 🔧 vkt-header icon in your toolbar to open the side panel
-
-> ⚠️ Do not install from third-party websites. Unauthorized versions may compromise your data security.
+> Install only from the official stores above — avoid third-party download sites.
 
 ---
 

@@ -97,7 +97,7 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 ## Vorschau
 
 <p align="center">
-  <img src="screenshot/preview.png" alt="vkt-header Vorschau" width="640">
+  <img src="../screenshots/promo.png" alt="vkt-header Vorschau" width="640">
 </p>
 
 ---
@@ -114,14 +114,12 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 
 ## Installation
 
-Zu deiner Sicherheit: Installiere vkt-header ausschließlich über offizielle Browser-Erweiterungsstores:
+| Store | Link |
+|---|---|
+| Chrome Web Store | Demnächst verfügbar 🚧 |
+| Microsoft Edge Add-ons | [In Edge installieren](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
 
-1. Öffne den **Chrome Web Store** oder **Microsoft Edge Add-ons**
-2. Suche: `vkt-header`
-3. Klicke auf **„Zu Chrome hinzufügen"** / **„Zu Edge hinzufügen"**
-4. Klicke auf das 🔧 vkt-header-Symbol in deiner Toolbar, um das Side Panel zu öffnen
-
-> ⚠️ Nicht von Drittanbieter-Websites installieren. Nicht autorisierte Versionen können deine Datensicherheit gefährden.
+> Installieren Sie nur über die offiziellen Stores oben – meiden Sie Download-Seiten Dritter.
 
 ---
 

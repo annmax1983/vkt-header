@@ -97,7 +97,7 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 ## Aperçu
 
 <p align="center">
-  <img src="screenshot/preview.png" alt="Aperçu vkt-header" width="640">
+  <img src="../screenshots/promo.png" alt="Aperçu vkt-header" width="640">
 </p>
 
 ---
@@ -114,14 +114,12 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 
 ## Installation
 
-Pour votre sécurité, n'installez vkt-header que via les boutiques officielles d'extensions :
+| Store | Lien |
+|---|---|
+| Chrome Web Store | Bientôt disponible 🚧 |
+| Microsoft Edge Add-ons | [Installer dans Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
 
-1. Ouvrez le **Chrome Web Store** ou **Microsoft Edge Add-ons**
-2. Recherchez : `vkt-header`
-3. Cliquez sur **« Ajouter à Chrome »** / **« Ajouter à Edge »**
-4. Cliquez sur l'icône 🔧 vkt-header dans votre barre d'outils pour ouvrir le panneau latéral
-
-> ⚠️ N'installez pas depuis des sites tiers. Les versions non autorisées peuvent compromettre la sécurité de vos données.
+> Installez uniquement depuis les boutiques officielles ci-dessus — évitez les sites de téléchargement tiers.
 
 ---
 

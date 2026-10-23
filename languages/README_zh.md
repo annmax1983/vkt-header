@@ -95,7 +95,7 @@
 ## 预览
 
 <p align="center">
-  <img src="../screenshot/preview.png" alt="vkt-header 预览" width="640">
+  <img src="../screenshots/promo.png" alt="vkt-header 预览" width="640">
 </p>
 
 ---
@@ -110,16 +110,14 @@
 
 ---
 
-## 安装方式
+## 安装
 
-为安全起见，请仅通过官方浏览器扩展商店安装：
+| 商店 | 链接 |
+|---|---|
+| Chrome 应用商店 | 正在路上，即将上线 🚧 |
+| Microsoft Edge 加载项 | [在 Edge 中安装](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
 
-1. 打开 **Chrome Web Store** 或 **Microsoft Edge Add-ons**
-2. 搜索：`vkt-header`
-3. 点击 **"添加到 Chrome"** / **"添加到 Edge"**
-4. 点击工具栏中的 🔧 vkt-header 图标，打开侧边栏
-
-> ⚠️ 请勿从第三方网站安装。未授权版本可能危及数据安全。
+> 请只通过上方官方商店安装，避免使用第三方下载站。
 
 ---
 

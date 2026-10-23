@@ -97,7 +97,7 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 ## Vista previa
 
 <p align="center">
-  <img src="screenshot/preview.png" alt="Vista previa de vkt-header" width="640">
+  <img src="../screenshots/promo.png" alt="Vista previa de vkt-header" width="640">
 </p>
 
 ---
@@ -114,14 +114,12 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 
 ## Instalación
 
-Por tu seguridad, instala vkt-header solo a través de las tiendas oficiales de extensiones del navegador:
+| Tienda | Enlace |
+|---|---|
+| Chrome Web Store | Próximamente 🚧 |
+| Complementos de Microsoft Edge | [Instalar en Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
 
-1. Abre **Chrome Web Store** o **Microsoft Edge Add-ons**
-2. Busca: `vkt-header`
-3. Haz clic en **"Añadir a Chrome"** / **"Añadir a Edge"**
-4. Haz clic en el icono 🔧 de vkt-header en tu barra de herramientas para abrir el panel lateral
-
-> ⚠️ No instales desde sitios web de terceros. Las versiones no autorizadas pueden comprometer la seguridad de tus datos.
+> Instale solo desde las tiendas oficiales de arriba; evite sitios de descarga de terceros.
 
 ---
 

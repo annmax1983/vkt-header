@@ -97,7 +97,7 @@ Chromiumブラウザ向けのグローバルHTTPリクエストヘッダー修�
 ## プレビュー
 
 <p align="center">
-  <img src="screenshot/preview.png" alt="vkt-header Preview" width="640">
+  <img src="../screenshots/promo.png" alt="vkt-header Preview" width="640">
 </p>
 
 ---
@@ -114,14 +114,12 @@ Chromiumブラウザ向けのグローバルHTTPリクエストヘッダー修�
 
 ## インストール
 
-安全性のため、公式ブラウザ拡張機能ストアを通じてのみvkt-headerをインストールしてください：
+| ストア | リンク |
+|---|---|
+| Chrome ウェブストア | 近日公開 🚧 |
+| Microsoft Edge アドオン | [Edge に追加](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
 
-1. **Chrome Web Store**または**Microsoft Edge Add-ons**を開きます
-2. 検索：`vkt-header`
-3. **「Chromeに追加」** / **「Edgeに追加」**をクリックします
-4. ツールバーの🔧 vkt-headerアイコンをクリックしてサイドパネルを開きます
-
-> ⚠️ サードパーティWebサイトからのインストールは避けてください。非承認版はデータセキュリティを損なう可能性があります。
+> 上記の公式ストアからのみインストールしてください。第三者サイトの利用は避けてください。
 
 ---
 
