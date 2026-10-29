@@ -2,9 +2,9 @@
 
 [English](../README.md) | [中文](README_zh.md) | [Español](README_es.md) | [Deutsch](README_de.md) | [日本語](README_ja.md) | Français
 
-Modificateur global d'en-têtes de requêtes HTTP pour navigateurs Chromium. Les règles sont matchées par **domaine uniquement** (insensible à la casse, le chemin est ignoré) et s'appliquent à **chaque onglet** — il n'y a pas d'isolation par onglet ni d'état par onglet.
+Modificateur global d'en-têtes de requêtes HTTP pour navigateurs Chrome, Edge et Firefox. Les règles sont matchées par **domaine uniquement** (insensible à la casse, le chemin est ignoré) et s'appliquent à **chaque onglet** — il n'y a pas d'isolation par onglet ni d'état par onglet.
 
-> Chromium · Manifest V3 · Session Rules · Correspondance par domaine · Global
+> Chrome / Edge / Firefox · Manifest V3 · Session Rules · Correspondance par domaine · Global
 
 ---
 
@@ -108,7 +108,10 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 |---------|--------|------------------|
 | Google Chrome | ✅ Entièrement pris en charge | Chrome 114+ (API SidePanel) |
 | Microsoft Edge | ✅ Entièrement pris en charge | Edge 114+ |
+| Mozilla Firefox | ✅ Entièrement pris en charge | Firefox 140+ (bureau) |
 | Autres navigateurs basés sur Chromium | ⚠️ Compatibilité de base | Doit supporter l'API SidePanel |
+
+> **Note Firefox :** L’interface s’ouvre dans la barre latérale de Firefox (Affichage → Barre latérale → vkt-header), la version Firefox ne demande donc pas la permission `sidePanel`. Le reste des fonctions se comporte comme sous Chrome / Edge.
 
 ---
 
@@ -118,6 +121,7 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 |---|---|
 | Chrome Web Store | Bientôt disponible 🚧 |
 | Microsoft Edge Add-ons | [Installer dans Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
+| Modules complémentaires Firefox (AMO) | Bientôt disponible 🚧 |
 
 > Installez uniquement depuis les boutiques officielles ci-dessus — évitez les sites de téléchargement tiers.
 
@@ -127,7 +131,7 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 
 vkt-header respecte les principes de confidentialité dès la conception :
 
-- ✅ Toutes les règles stockées dans `chrome.storage.local` — **aucune règle n'est envoyée ; la seule requête est la validation facultative de licence**
+- ✅ Toutes les règles stockées dans `storage.local` — **aucune règle n'est envoyée ; la seule requête est la validation facultative de licence**
 - ✅ Les session rules s'effacent automatiquement au redémarrage et se réappliquent au démarrage
 - ✅ Pas d'analytics, pas de suivi, pas de cookies
 - ✅ Certains en-têtes (Host, Origin) sont protégés par le navigateur et ne peuvent pas être modifiés
@@ -139,7 +143,7 @@ vkt-header respecte les principes de confidentialité dès la conception :
 |------------|--------|
 | `storage` | Sauvegarder les règles d'en-têtes et les paramètres en local |
 | `activeTab` | Accéder à l'onglet actif (ex. pour lire son URL dans le panneau latéral) |
-| `sidePanel` | Afficher l'interface de l'extension dans un panneau latéral |
+| `sidePanel` | Afficher l'interface de l'extension dans un panneau latéral (uniquement Chrome / Edge) |
 | `declarativeNetRequestWithHostAccess` | Modifier les en-têtes de requêtes HTTP |
 | `tabs` | Lire l'URL de l'onglet actif pour la fonctionnalité de tag de domaine |
 
@@ -179,7 +183,7 @@ vkt-header respecte les principes de confidentialité dès la conception :
 
 ## Avis sur le code source
 
-> ⚠️ **Ce dépôt ne publie pas le code source.** Il contient uniquement la documentation d'utilisation, les notes de version et les ressources d'assistance. L'extension est distribuée exclusivement via le Chrome Web Store. Aucun package d'installation hors ligne ni code source destiné aux utilisateurs finaux n'est fourni.
+> ⚠️ **Ce dépôt ne publie pas le code source.** Il contient uniquement la documentation d'utilisation, les notes de version et les ressources d'assistance. L'extension est distribuée exclusivement via le Chrome Web Store, Microsoft Edge Add-ons et Firefox Add-ons (AMO). Aucun package d'installation hors ligne ni code source destiné aux utilisateurs finaux n'est fourni.
 
 ---
 

@@ -2,9 +2,9 @@
 
 English | [中文](languages/README_zh.md) | [Español](languages/README_es.md) | [Deutsch](languages/README_de.md) | [日本語](languages/README_ja.md) | [Français](languages/README_fr.md)
 
-Global HTTP request header modifier for Chromium browsers. Rules are matched by **domain only** (case-insensitive, path ignored) and apply to **every tab** — there is no tab isolation and no per-tab state.
+Global HTTP request header modifier for Chrome, Edge and Firefox. Rules are matched by **domain only** (case-insensitive, path ignored) and apply to **every tab** — there is no tab isolation and no per-tab state.
 
-> Chromium · Manifest V3 · Session Rules · Domain Matching · Global
+> Chrome · Edge · Firefox · Manifest V3 · Session Rules · Domain Matching · Global
 
 ---
 
@@ -18,7 +18,7 @@ Most header modifiers change headers globally, or require fiddly per-tab state. 
 | 🔗 **Any Tab** | A rule applies in every tab — nothing is bound to a specific tab. |
 | 🌍 **Global Rules** | Leave the Match URL empty and the rule applies to **all requests**. |
 | 🧹 **Auto Re-apply** | Session rules vanish on browser restart; vkt-header re-applies all enabled rules automatically when the browser starts. |
-| ⚡ **Inline Editing** | Add/edit headers directly in the side panel. No separate editor. |
+| ⚡ **Inline Editing** | Add/edit headers directly in the panel — Chromium side panel or Firefox sidebar. No separate editor. |
 | 🎯 **Presets** | One-click presets: iPhone, Android, iPad, Googlebot, Referer, X-Forwarded-For. |
 
 ---
@@ -43,7 +43,7 @@ Each rule has a **Match URL** field, but only the **domain** part is used:
 | `pic.cnblogs.com` | pic.cnblogs.com | pic.cnblogs.com and www.pic.cnblogs.com only |
 | *(empty)* | — | **all requests** |
 
-Enable a rule with its switch in the side panel. The master switch at the top stops or resumes all rules at once.
+Enable a rule with its switch in the panel. The master switch at the top stops or resumes all rules at once.
 
 ---
 
@@ -53,7 +53,7 @@ Enable a rule with its switch in the side panel. The master switch at the top st
 |---------|-------------|
 | **Set / Append / Remove headers** | Overwrite, append to (Cookie, X-Forwarded-For…), or delete any header |
 | **Request & response headers** | Modify request headers and response headers independently per rule |
-| **Inline editor** | Edit headers directly in the side panel — no popup/panel switching |
+| **Inline editor** | Edit headers directly in the panel — no popup/panel switching |
 | **Rule system** | Save multiple header configurations as rules |
 | **Domain binding** | Bind rules to a domain (case-insensitive, path ignored) |
 | **Include subdomains** | Optional toggle: match every subdomain (`*.example.com`) |
@@ -69,7 +69,7 @@ Enable a rule with its switch in the side panel. The master switch at the top st
 | **Migrate from ModHeader / Header Editor** | Import their exported JSON files — see [Migration import](#migrating-from-modheader--header-editor) |
 | **Import / Export** | JSON backup and restore of all rules *(Premium)* |
 
-Enable a rule with its switch in the side panel. The master switch at the top stops or resumes all rules at once. To check what a rule will actually do, open the **request tester** (🔍 in the panel header): it runs a URL through the same matching logic the extension uses, and shows every header the final request/response would carry.
+Enable a rule with its switch in the panel. The master switch at the top stops or resumes all rules at once. To check what a rule will actually do, open the **request tester** (🔍 in the panel header): it runs a URL through the same matching logic the extension uses, and shows every header the final request/response would carry.
 
 ---
 
@@ -122,11 +122,14 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 
 ## Supported Browsers
 
-| Browser | Status | Minimum Version |
-|---------|--------|------------------|
-| Google Chrome | ✅ Fully supported | Chrome 114+ (SidePanel API) |
-| Microsoft Edge | ✅ Fully supported | Edge 114+ |
-| Other Chromium-based browsers | ⚠️ Basic compatible | Must support SidePanel API |
+| Browser | Status | Minimum Version | UI |
+|---------|--------|------------------|----|
+| Google Chrome | ✅ Fully supported | Chrome 114+ | Side panel |
+| Microsoft Edge | ✅ Fully supported | Edge 114+ | Side panel |
+| Mozilla Firefox | ✅ Fully supported | Firefox 140+ (desktop) | Sidebar |
+| Other Chromium-based browsers | ⚠️ Basic compatible | Must support the SidePanel API | Side panel |
+
+> **Firefox note:** the panel opens in Firefox's **Sidebar** (*View → Sidebar → vkt-header*) because Firefox has no SidePanel API — the `sidePanel` permission is not declared in the Firefox build. Header modification itself uses `declarativeNetRequestWithHostAccess` with session rules, exactly as on Chrome and Edge, so set / append / remove on request and response headers, domain matching, subdomain toggles, method filters, the request tester and the toolbar badge all behave the same. Firefox also asks for `storage`, `activeTab`, `tabs`, `<all_urls>` and the licence host.
 
 ---
 
@@ -136,6 +139,7 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 |---|---|
 | Chrome Web Store | Coming soon 🚧 |
 | Microsoft Edge Add-ons | [Install for Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
+| Firefox Add-ons (AMO) | Coming soon 🚧 |
 
 > Install only from the official stores above — avoid third-party download sites.
 
@@ -145,7 +149,7 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 
 vkt-header follows privacy-by-design principles:
 
-- ✅ All rules stored in `chrome.storage.local` — **your rules are never uploaded — the only request is optional license validation**
+- ✅ All rules stored in the extension's local storage (`storage.local`) — **your rules are never uploaded — the only request is optional license validation**
 - ✅ Session rules auto-clear on browser restart and re-apply automatically on browser start
 - ✅ No analytics, no tracking, no cookies
 - ✅ Some headers (Host, Origin) are browser-protected and cannot be modified
@@ -153,13 +157,15 @@ vkt-header follows privacy-by-design principles:
 
 ### Permissions
 
-| Permission | Reason |
-|------------|--------|
-| `storage` | Save header rules and settings locally |
-| `activeTab` | Access the current tab (e.g. to read its URL in the side panel) |
-| `sidePanel` | Display the extension UI in a side panel |
-| `declarativeNetRequestWithHostAccess` | Modify HTTP request headers |
-| `tabs` | Read the active tab's URL for the domain tag feature |
+| Permission | Reason | Platforms |
+|------------|--------|-----------|
+| `storage` | Save header rules and settings locally | All |
+| `activeTab` | Access the current tab (e.g. to read its URL in the panel) | All |
+| `declarativeNetRequestWithHostAccess` | Modify HTTP request headers | All |
+| `tabs` | Read the active tab's URL for the domain tag feature | All |
+| `sidePanel` | Display the extension UI in a side panel | Chrome / Edge only — Firefox uses `sidebar_action` and needs no permission for it |
+
+Firefox therefore shows one permission less than Chrome / Edge in *Add-ons Manager → Permissions*.
 
 - [Full Privacy Policy](https://annmax1983.github.io/vkt-header/privacy-policy.html)
 
@@ -183,7 +189,7 @@ vkt-header follows privacy-by-design principles:
    DNR rules don't apply to requests served from the browser cache. After enabling a rule, hard-refresh the page (Ctrl+Shift+R) or reopen it — the navigation request will then carry the header. Cached sub-resources behave the same way.
 
 6. **Headers missing right after the browser starts?**
-   The service worker wakes lazily: the very first requests can fire before vkt-header has re-applied its session rules. Retry or refresh — every subsequent navigation carries the headers. This only affects the first moments after browser startup, not normal browsing.
+   The background context wakes lazily (service worker on Chrome / Edge, event page on Firefox): the very first requests can fire before vkt-header has re-applied its session rules. Retry or refresh — every subsequent navigation carries the headers. This only affects the first moments after browser startup, not normal browsing.
 
 ---
 
@@ -197,7 +203,7 @@ vkt-header follows privacy-by-design principles:
 
 ## Source Code Notice
 
-> ⚠️ **This repository does not publish source code.** It contains only usage documentation, release notes, and support resources. The extension is distributed exclusively through the Chrome Web Store. No offline installation packages or end-user source code are provided.
+> ⚠️ **This repository does not publish source code.** It contains only usage documentation, release notes, and support resources. The extension is distributed exclusively through the Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons (AMO). No offline installation packages or end-user source code are provided.
 
 ---
 

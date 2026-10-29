@@ -4,7 +4,7 @@
 
 Chromiumブラウザ向けのグローバルHTTPリクエストヘッダー修飾子です。ルールは**ドメインのみ**で一致判定され（大文字小文字を区別せず、パスは無視）、**すべてのタブ**に適用されます — タブ分離やタブごとの状態管理はありません。
 
-> Chromium · Manifest V3 · Session Rules · ドメインマッチング · グローバル
+> Chrome / Edge / Firefox · Manifest V3 · Session Rules · ドメインマッチング · グローバル
 
 ---
 
@@ -108,7 +108,10 @@ Chromiumブラウザ向けのグローバルHTTPリクエストヘッダー修�
 |---------|--------|------------------|
 | Google Chrome | ✅ 完全対応 | Chrome 114+（SidePanel API） |
 | Microsoft Edge | ✅ 完全対応 | Edge 114+ |
+| Mozilla Firefox | ✅ 完全対応 | Firefox 140+（デスクトップ） |
 | その他のChromium系ブラウザ | ⚠️ 基本対応 | SidePanel API対応が必要 |
+
+> **Firefox について：** 画面は Firefox のサイドバーで開きます（表示 → サイドバー → vkt-header）。そのため Firefox 版では `sidePanel` 権限を要求しません。その他の機能は Chrome / Edge と同じです。
 
 ---
 
@@ -118,6 +121,7 @@ Chromiumブラウザ向けのグローバルHTTPリクエストヘッダー修�
 |---|---|
 | Chrome ウェブストア | 近日公開 🚧 |
 | Microsoft Edge アドオン | [Edge に追加](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
+| Firefox アドオン（AMO） | 近日公開 🚧 |
 
 > 上記の公式ストアからのみインストールしてください。第三者サイトの利用は避けてください。
 
@@ -127,7 +131,7 @@ Chromiumブラウザ向けのグローバルHTTPリクエストヘッダー修�
 
 vkt-headerはプライバシー・バイ・デザインの原則に従っています：
 
-- ✅ すべてのルールは`chrome.storage.local`に保存 — **ルールがアップロードされることはありません。通信は任意のライセンス検証のみです**
+- ✅ すべてのルールは`storage.local`に保存 — **ルールがアップロードされることはありません。通信は任意のライセンス検証のみです**
 - ✅ Session rulesはブラウザ再起動時に自動クリアされ、ブラウザ起動時に自動再適用されます
 - ✅ アナリティクス、トラッキング、Cookieなし
 - ✅ 一部のヘッダー（Host、Origin）はブラウザ保護されており、変更できません
@@ -139,7 +143,7 @@ vkt-headerはプライバシー・バイ・デザインの原則に従ってい�
 |------------|--------|
 | `storage` | ヘッダールールと設定をローカルに保存 |
 | `activeTab` | 現在のタブにアクセス（サイドパネルでURLを読み取るため） |
-| `sidePanel` | サイドパネルで拡張機能UIを表示 |
+| `sidePanel` | サイドパネルで拡張機能UIを表示 （Chrome / Edge のみ） |
 | `declarativeNetRequestWithHostAccess` | HTTPリクエストヘッダーを修飾 |
 | `tabs` | ドメインタグ機能用にアクティブタブのURLを読み取り |
 
@@ -179,7 +183,7 @@ vkt-headerはプライバシー・バイ・デザインの原則に従ってい�
 
 ## ソースコードに関する注意
 
-> ⚠️ **このリポジトリにはソースコードは公開されていません。** 使用ドキュメント、リリースノート、サポートリソースのみを含みます。拡張機能はChrome Web Storeを通じてのみ配布されます。オフラインインストールパッケージやエンドユーザー向けソースコードは提供されません。
+> ⚠️ **このリポジトリにはソースコードは公開されていません。** 使用ドキュメント、リリースノート、サポートリソースのみを含みます。拡張機能はChrome Web Store、Microsoft Edgeアドオン、Firefoxアドオン（AMO）を通じてのみ配布されます。オフラインインストールパッケージやエンドユーザー向けソースコードは提供されません。
 
 ---
 

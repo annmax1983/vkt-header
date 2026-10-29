@@ -2,9 +2,9 @@
 
 [English](../README.md) | [中文](README_zh.md) | Español | [Deutsch](README_de.md) | [日本語](README_ja.md) | [Français](README_fr.md)
 
-Modificador global de cabeceras HTTP de solicitud para navegadores Chromium. Las reglas se comparan por **solo dominio** (sin distinción de mayúsculas/minúsculas, la ruta se ignora) y se aplican en **todas las pestañas** — no hay aislamiento por pestaña ni estado por pestaña.
+Modificador global de cabeceras HTTP de solicitud para navegadores Chrome, Edge y Firefox. Las reglas se comparan por **solo dominio** (sin distinción de mayúsculas/minúsculas, la ruta se ignora) y se aplican en **todas las pestañas** — no hay aislamiento por pestaña ni estado por pestaña.
 
-> Chromium · Manifest V3 · Session Rules · Coincidencia por dominio · Global
+> Chrome / Edge / Firefox · Manifest V3 · Session Rules · Coincidencia por dominio · Global
 
 ---
 
@@ -108,7 +108,10 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 |---------|--------|------------------|
 | Google Chrome | ✅ Totalmente compatible | Chrome 114+ (SidePanel API) |
 | Microsoft Edge | ✅ Totalmente compatible | Edge 114+ |
+| Mozilla Firefox | ✅ Totalmente compatible | Firefox 140+ (escritorio) |
 | Otros navegadores basados en Chromium | ⚠️ Básico compatible | Debe soportar SidePanel API |
+
+> **Nota sobre Firefox:** La interfaz se abre en la barra lateral de Firefox (Ver → Barra lateral → vkt-header), por lo que la versión de Firefox no solicita el permiso `sidePanel`. El resto de funciones se comporta igual que en Chrome / Edge.
 
 ---
 
@@ -118,6 +121,7 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 |---|---|
 | Chrome Web Store | Próximamente 🚧 |
 | Complementos de Microsoft Edge | [Instalar en Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
+| Complementos de Firefox (AMO) | Próximamente 🚧 |
 
 > Instale solo desde las tiendas oficiales de arriba; evite sitios de descarga de terceros.
 
@@ -127,7 +131,7 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 
 vkt-header sigue principios de privacidad desde el diseño:
 
-- ✅ Todas las reglas se almacenan en `chrome.storage.local` — **las reglas nunca se suben; la única petición es la validación opcional de la licencia**
+- ✅ Todas las reglas se almacenan en `storage.local` — **las reglas nunca se suben; la única petición es la validación opcional de la licencia**
 - ✅ Las session rules se borran al reiniciar el navegador y se vuelven a aplicar automáticamente al iniciar el navegador
 - ✅ Sin analíticas, sin rastreo, sin cookies
 - ✅ Algunas cabeceras (Host, Origin) están protegidas por el navegador y no pueden modificarse
@@ -139,7 +143,7 @@ vkt-header sigue principios de privacidad desde el diseño:
 |------------|--------|
 | `storage` | Guardar reglas de cabeceras y configuración localmente |
 | `activeTab` | Acceder a la pestaña actual (ej. para leer su URL en el panel lateral) |
-| `sidePanel` | Mostrar la interfaz de la extensión en un panel lateral |
+| `sidePanel` | Mostrar la interfaz de la extensión en un panel lateral (solo Chrome / Edge) |
 | `declarativeNetRequestWithHostAccess` | Modificar cabeceras de solicitud HTTP |
 | `tabs` | Leer la URL de la pestaña activa para la funcionalidad de etiqueta de dominio |
 
@@ -179,7 +183,7 @@ vkt-header sigue principios de privacidad desde el diseño:
 
 ## Aviso sobre el código fuente
 
-> ⚠️ **Este repositorio no publica código fuente.** Contiene únicamente documentación de uso, notas de lanzamiento y recursos de soporte. La extensión se distribuye exclusivamente a través de Chrome Web Store. No se proporcionan paquetes de instalación sin conexión ni código fuente para usuarios finales.
+> ⚠️ **Este repositorio no publica código fuente.** Contiene únicamente documentación de uso, notas de lanzamiento y recursos de soporte. La extensión se distribuye exclusivamente a través de Chrome Web Store, Microsoft Edge Add-ons y Firefox Add-ons (AMO). No se proporcionan paquetes de instalación sin conexión ni código fuente para usuarios finales.
 
 ---
 

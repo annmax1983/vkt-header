@@ -3,7 +3,7 @@
 
 按**域名**匹配的全局 HTTP 请求头修改工具。规则只看 URL 的**域名**（忽略大小写、忽略路径），并且对**所有标签页**生效——没有标签页隔离，也不需要按标签页管理状态。
 
-> Chromium · Manifest V3 · 会话规则 · 域名匹配 · 全局生效
+> Chrome / Edge / Firefox · Manifest V3 · 会话规则 · 域名匹配 · 全局生效
 
 ---
 
@@ -106,7 +106,10 @@
 |--------|------|----------|
 | Google Chrome | ✅ 完全支持 | Chrome 114+（SidePanel API） |
 | Microsoft Edge | ✅ 完全支持 | Edge 114+ |
+| Mozilla Firefox | ✅ 完全支持 | Firefox 140+（桌面版） |
 | 其他Chromium浏览器 | ⚠️ 基本兼容 | 需支持SidePanel API |
+
+> **Firefox 说明：** 界面在 Firefox 侧边栏中打开（查看 → 侧栏 → vkt-header），因此 Firefox 版不申请 `sidePanel` 权限。其余功能与 Chrome / Edge 一致。
 
 ---
 
@@ -116,6 +119,7 @@
 |---|---|
 | Chrome 应用商店 | 正在路上，即将上线 🚧 |
 | Microsoft Edge 加载项 | [在 Edge 中安装](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
+| Firefox 附加组件（AMO） | 即将上线 🚧 |
 
 > 请只通过上方官方商店安装，避免使用第三方下载站。
 
@@ -125,7 +129,7 @@
 
 vkt-header 遵循隐私优先原则：
 
-- ✅ 全部规则存储在 `chrome.storage.local` — **规则不会上传；唯一的请求是可选的授权验证**
+- ✅ 全部规则存储在 `storage.local` — **规则不会上传；唯一的请求是可选的授权验证**
 - ✅ 会话规则在浏览器重启后自动清空，浏览器启动时自动重新应用已启用规则
 - ✅ 无分析追踪、无Cookie
 - ✅ 部分请求头（Host、Origin 等）受浏览器保护，无法修改
@@ -137,7 +141,7 @@ vkt-header 遵循隐私优先原则：
 |------|------|
 | `storage` | 本地保存请求头规则和设置 |
 | `activeTab` | 访问当前标签页（如读取其 URL） |
-| `sidePanel` | 显示扩展侧边栏界面 |
+| `sidePanel` | 显示扩展侧边栏界面 （仅 Chrome / Edge） |
 | `declarativeNetRequestWithHostAccess` | 修改HTTP请求头 |
 | `tabs` | 读取当前标签页 URL（域名标签功能） |
 
@@ -177,7 +181,7 @@ vkt-header 遵循隐私优先原则：
 
 ## 源码说明
 
-> ⚠️ **本仓库不公开源代码。** 仅包含使用文档、更新日志和支持资源。扩展仅通过 Chrome Web Store 分发，不提供离线安装包或终端用户源代码。
+> ⚠️ **本仓库不公开源代码。** 仅包含使用文档、更新日志和支持资源。扩展仅通过 Chrome Web Store、Microsoft Edge Add-ons 与 Firefox 附加组件（AMO） 分发，不提供离线安装包或终端用户源代码。
 
 ---
 

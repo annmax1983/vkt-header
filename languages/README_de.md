@@ -2,9 +2,9 @@
 
 [English](../README.md) | [中文](README_zh.md) | [Español](README_es.md) | Deutsch | [日本語](README_ja.md) | [Français](README_fr.md)
 
-Globaler HTTP-Request-Header-Modifier für Chromium-Browser. Regeln werden nur nach **Domain** gematcht (Groß-/Kleinschreibung irrelevant, Pfad ignoriert) und gelten für **jeden Tab** — es gibt keine Tab-Isolation und keinen Zustand pro Tab.
+Globaler HTTP-Request-Header-Modifier für Chrome-, Edge- und Firefox-Browser. Regeln werden nur nach **Domain** gematcht (Groß-/Kleinschreibung irrelevant, Pfad ignoriert) und gelten für **jeden Tab** — es gibt keine Tab-Isolation und keinen Zustand pro Tab.
 
-> Chromium · Manifest V3 · Session Rules · Domain-Matching · Global
+> Chrome / Edge / Firefox · Manifest V3 · Session Rules · Domain-Matching · Global
 
 ---
 
@@ -108,7 +108,10 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 |---------|--------|----------------|
 | Google Chrome | ✅ Vollständig unterstützt | Chrome 114+ (SidePanel API) |
 | Microsoft Edge | ✅ Vollständig unterstützt | Edge 114+ |
+| Mozilla Firefox | ✅ Vollständig unterstützt | Firefox 140+ (Desktop) |
 | Andere Chromium-basierte Browser | ⚠️ Grundlegend kompatibel | Muss SidePanel API unterstützen |
+
+> **Firefox-Hinweis:** Die Oberfläche öffnet sich in der Firefox-Seitenleiste (Ansicht → Seitenleiste → vkt-header); die Berechtigung `sidePanel` wird in der Firefox-Version daher nicht angefordert. Die übrigen Funktionen verhalten sich wie unter Chrome / Edge.
 
 ---
 
@@ -118,6 +121,7 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 |---|---|
 | Chrome Web Store | Demnächst verfügbar 🚧 |
 | Microsoft Edge Add-ons | [In Edge installieren](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
+| Firefox-Add-ons (AMO) | Demnächst verfügbar 🚧 |
 
 > Installieren Sie nur über die offiziellen Stores oben – meiden Sie Download-Seiten Dritter.
 
@@ -127,7 +131,7 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 
 vkt-header folgt den Prinzipien von Privacy-by-Design:
 
-- ✅ Alle Regeln in `chrome.storage.local` gespeichert — **keine Regeln werden hochgeladen; die einzige Anfrage ist die optionale Lizenzprüfung**
+- ✅ Alle Regeln in `storage.local` gespeichert — **keine Regeln werden hochgeladen; die einzige Anfrage ist die optionale Lizenzprüfung**
 - ✅ Session Rules werden beim Browser-Neustart automatisch gelöscht und beim Browser-Start wieder angewendet
 - ✅ Keine Analytik, kein Tracking, keine Cookies
 - ✅ Einige Header (Host, Origin) sind browser-geschützt und können nicht verändert werden
@@ -139,7 +143,7 @@ vkt-header folgt den Prinzipien von Privacy-by-Design:
 |--------------|-------|
 | `storage` | Header-Regeln und Einstellungen lokal speichern |
 | `activeTab` | Zugriff auf den aktuellen Tab (z.B. zum Lesen der URL im Side Panel) |
-| `sidePanel` | Erweiterungs-UI im Side Panel anzeigen |
+| `sidePanel` | Erweiterungs-UI im Side Panel anzeigen (nur Chrome / Edge) |
 | `declarativeNetRequestWithHostAccess` | HTTP-Request-Header modifizieren |
 | `tabs` | URL des aktiven Tabs für die Domain-Tag-Funktion lesen |
 
@@ -179,7 +183,7 @@ vkt-header folgt den Prinzipien von Privacy-by-Design:
 
 ## Quellcode-Hinweis
 
-> ⚠️ **Dieses Repository veröffentlicht keinen Quellcode.** Es enthält nur Nutzerdokumentation, Versionshinweise und Support-Ressourcen. Die Erweiterung wird ausschließlich über den Chrome Web Store vertrieben. Es werden keine Offline-Installationspakete oder Endbenutzer-Quellcodes bereitgestellt.
+> ⚠️ **Dieses Repository veröffentlicht keinen Quellcode.** Es enthält nur Nutzerdokumentation, Versionshinweise und Support-Ressourcen. Die Erweiterung wird ausschließlich über den Chrome Web Store, Microsoft Edge Add-ons und Firefox-Add-ons (AMO) vertrieben. Es werden keine Offline-Installationspakete oder Endbenutzer-Quellcodes bereitgestellt.
 
 ---
 
