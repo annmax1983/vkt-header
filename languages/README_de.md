@@ -121,7 +121,7 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 |---|---|
 | Chrome Web Store | Demnächst verfügbar 🚧 |
 | Microsoft Edge Add-ons | [In Edge installieren](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
-| Firefox-Add-ons (AMO) | Demnächst verfügbar 🚧 |
+| Firefox-Add-ons (AMO) | [Für Firefox installieren](https://addons.mozilla.org/firefox/addon/vkt-header-modifier/) |
 
 > Installieren Sie nur über die offiziellen Stores oben – meiden Sie Download-Seiten Dritter.
 
@@ -203,3 +203,12 @@ Diese Software ist Closed-Source-Proprietärsoftware. Ohne offizielle schriftlic
 Wenn dir vkt-header hilft, kannst du dem Entwickler gerne einen Kaffee ausgeben!
 
 **[👉 Hier unterstützen](https://ko-fi.com/annmax?buyACoffee=true&ref=vkt-header)**
+
+---
+
+## Links
+
+- **Offizielle Website:** https://annmax1983.com/
+- **Diese Erweiterung:** https://annmax1983.com/extensions/vkt-header
+- **Datenschutz:** https://annmax1983.com/privacy
+- **Kontakt:** support@annmax1983.com

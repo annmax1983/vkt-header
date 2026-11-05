@@ -121,7 +121,7 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 |---|---|
 | Chrome Web Store | Bientôt disponible 🚧 |
 | Microsoft Edge Add-ons | [Installer dans Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
-| Modules complémentaires Firefox (AMO) | Bientôt disponible 🚧 |
+| Modules complémentaires Firefox (AMO) | [Installer pour Firefox](https://addons.mozilla.org/firefox/addon/vkt-header-modifier/) |
 
 > Installez uniquement depuis les boutiques officielles ci-dessus — évitez les sites de téléchargement tiers.
 
@@ -203,3 +203,12 @@ Ce logiciel est un logiciel propriétaire fermé. Sans autorisation écrite offi
 Si vkt-header vous est utile, offrez un café au développeur !
 
 **[👉 Cliquez ici pour soutenir](https://ko-fi.com/annmax?buyACoffee=true&ref=vkt-header)**
+
+---
+
+## Liens
+
+- **Site officiel:** https://annmax1983.com/
+- **Cette extension:** https://annmax1983.com/extensions/vkt-header
+- **Confidentialité:** https://annmax1983.com/privacy
+- **Contact:** support@annmax1983.com

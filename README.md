@@ -137,9 +137,9 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 
 | Store | Link |
 |---|---|
-| Chrome Web Store | Coming soon 🚧 |
+| Chrome Web Store | — not published yet (use Edge or Firefox) |
 | Microsoft Edge Add-ons | [Install for Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
-| Firefox Add-ons (AMO) | Coming soon 🚧 |
+| Firefox Add-ons (AMO) | [Install for Firefox](https://addons.mozilla.org/firefox/addon/vkt-header-modifier/) |
 
 > Install only from the official stores above — avoid third-party download sites.
 
@@ -223,3 +223,13 @@ This software is closed-source proprietary software. Without official written au
 If you find vkt-header helpful, consider buying the developer a coffee!
 
 **[👉 Click here to support](https://ko-fi.com/annmax?buyACoffee=true&ref=vkt-header)**
+
+---
+
+## Links
+
+- **Official website:** https://annmax1983.com/
+- **This extension:** https://annmax1983.com/extensions/vkt-header
+- **Privacy policy:** https://annmax1983.com/privacy
+- **Contact:** support@annmax1983.com
+- **☕ Support this project (Ko-fi):** https://ko-fi.com/annmax?ref=vkt-header

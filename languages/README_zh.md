@@ -119,7 +119,7 @@
 |---|---|
 | Chrome 应用商店 | 正在路上，即将上线 🚧 |
 | Microsoft Edge 加载项 | [在 Edge 中安装](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
-| Firefox 附加组件（AMO） | 即将上线 🚧 |
+| Firefox 附加组件（AMO） | [安装 Firefox 版](https://addons.mozilla.org/firefox/addon/vkt-header-modifier/) |
 
 > 请只通过上方官方商店安装，避免使用第三方下载站。
 
@@ -201,3 +201,12 @@ Copyright © 2026 vkt-header. 保留所有权利。
 如果你觉得 vkt-header 有帮助，欢迎请开发者喝杯咖啡！
 
 **[👉 点击支持](https://ko-fi.com/annmax?buyACoffee=true&ref=vkt-header)**
+
+---
+
+## 链接
+
+- **官方网站:** https://annmax1983.com/
+- **本插件:** https://annmax1983.com/extensions/vkt-header
+- **隐私政策:** https://annmax1983.com/privacy
+- **联系:** support@annmax1983.com

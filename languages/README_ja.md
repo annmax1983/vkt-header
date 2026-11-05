@@ -121,7 +121,7 @@ Chromiumブラウザ向けのグローバルHTTPリクエストヘッダー修�
 |---|---|
 | Chrome ウェブストア | 近日公開 🚧 |
 | Microsoft Edge アドオン | [Edge に追加](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
-| Firefox アドオン（AMO） | 近日公開 🚧 |
+| Firefox アドオン（AMO） | [Firefox 版をインストール](https://addons.mozilla.org/firefox/addon/vkt-header-modifier/) |
 
 > 上記の公式ストアからのみインストールしてください。第三者サイトの利用は避けてください。
 
@@ -203,3 +203,12 @@ Copyright © 2026 vkt-header. All rights reserved.
 vkt-headerが役に立った場合は、開発者にコーヒーをおごってあげてください！
 
 **[👉 こちらから支援する](https://ko-fi.com/annmax?buyACoffee=true&ref=vkt-header)**
+
+---
+
+## リンク
+
+- **公式サイト:** https://annmax1983.com/
+- **この拡張機能:** https://annmax1983.com/extensions/vkt-header
+- **プライバシーポリシー:** https://annmax1983.com/privacy
+- **お問い合わせ:** support@annmax1983.com

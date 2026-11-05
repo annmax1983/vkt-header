@@ -121,7 +121,7 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 |---|---|
 | Chrome Web Store | Próximamente 🚧 |
 | Complementos de Microsoft Edge | [Instalar en Edge](https://microsoftedge.microsoft.com/addons/detail/oankkbickmjahhclbaldoejlokakoghn) |
-| Complementos de Firefox (AMO) | Próximamente 🚧 |
+| Complementos de Firefox (AMO) | [Instalar para Firefox](https://addons.mozilla.org/firefox/addon/vkt-header-modifier/) |
 
 > Instale solo desde las tiendas oficiales de arriba; evite sitios de descarga de terceros.
 
@@ -203,3 +203,12 @@ Este software es de código cerrado y propietario. Sin autorización escrita ofi
 Si te resulta útil vkt-header, ¡considera invitar al desarrollador a un café!
 
 **[👉 Haz clic aquí para apoyar](https://ko-fi.com/annmax?buyACoffee=true&ref=vkt-header)**
+
+---
+
+## Enlaces
+
+- **Sitio oficial:** https://annmax1983.com/
+- **Esta extensión:** https://annmax1983.com/extensions/vkt-header
+- **Privacidad:** https://annmax1983.com/privacy
+- **Contacto:** support@annmax1983.com
