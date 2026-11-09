@@ -181,7 +181,9 @@ vkt-header 遵循隐私优先原则：
 
 ## 源码说明
 
-> ⚠️ **本仓库不公开源代码。** 仅包含使用文档、更新日志和支持资源。扩展仅通过 Chrome Web Store、Microsoft Edge Add-ons 与 Firefox 附加组件（AMO） 分发，不提供离线安装包或终端用户源代码。
+> ⚠️ **本仓库仅用于项目展示，不发布完整源码。** 这里只有扩展的使用说明、更新日志与支持信息。
+
+> 📥 **请前往官方浏览器商店下载安装：** Chrome Web Store · Microsoft Edge Add-ons · Firefox 附加组件（AMO）。本仓库不提供离线安装包，也不向终端用户分发源码包。
 
 ---
 
