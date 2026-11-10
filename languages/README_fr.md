@@ -64,7 +64,7 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 | **Préréglages** | Ajout rapide d'en-têtes courants : UA mobile, UA bot, Referer, XFF |
 | **Tout onglet** | Les règles sont globales — pas d'isolation par onglet, pas de bascule par onglet |
 | **Session rules** | Règles de session `declarativeNetRequest` — effacement auto au redémarrage, réapplication auto au démarrage |
-| **Import / Export** | Sauvegarde et restauration JSON de toutes les règles *(Premium)* |
+| **Import / Export** | Sauvegarde et restauration JSON de toutes les règles *(Pro)* |
 
 ---
 
@@ -81,15 +81,15 @@ Activez une règle avec son commutateur dans le panneau latéral. Le commutateur
 
 ---
 
-## Gratuit vs Premium
+## Gratuit vs Pro
 
-| | Gratuit | Premium |
+| | Gratuit | Pro |
 |---|---|---|
 | Règles | 5 max | Illimité |
 | En-têtes par règle | 5 max | Illimité |
 | Correspondance par domaine | ✅ | ✅ |
 | Règles globales (URL vide) | ✅ | ✅ |
-| Import / Export | ❌ Premium uniquement | ✅ |
+| Import / Export | ❌ Pro uniquement | ✅ |
 | Préréglages | ✅ | ✅ |
 
 ---

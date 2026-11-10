@@ -64,7 +64,7 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 | **Preajustes** | Añade rápidamente cabeceras comunes: UA móvil, UA de bot, Referer, XFF |
 | **Cualquier pestaña** | Las reglas son globales — sin aislamiento por pestaña, sin interruptores por pestaña |
 | **Session Rules** | Session rules de `declarativeNetRequest` — se borran al reiniciar, se vuelven a aplicar al iniciar el navegador |
-| **Importar / Exportar** | Respaldo y restauración JSON de todas las reglas *(Premium)* |
+| **Importar / Exportar** | Respaldo y restauración JSON de todas las reglas *(Pro)* |
 
 ---
 
@@ -81,15 +81,15 @@ Activa una regla con su interruptor en el panel lateral. El interruptor maestro 
 
 ---
 
-## Gratis vs Premium
+## Gratis vs Pro
 
-| | Gratis | Premium |
+| | Gratis | Pro |
 |---|---|---|
 | Reglas | 5 como máximo | Ilimitadas |
 | Cabeceras por regla | 5 como máximo | Ilimitadas |
 | Coincidencia por dominio | ✅ | ✅ |
 | Reglas globales (URL vacía) | ✅ | ✅ |
-| Importar / Exportar | ❌ Solo Premium | ✅ |
+| Importar / Exportar | ❌ Solo Pro | ✅ |
 | Preajustes | ✅ | ✅ |
 
 ---

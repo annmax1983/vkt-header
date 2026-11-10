@@ -64,7 +64,7 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 | **Voreinstellungen** | Schnell hinzufügen: Mobile UA, Bot UA, Referer, XFF |
 | **Jeder Tab** | Regeln sind global — keine Tab-Isolation, kein Umschalten pro Tab |
 | **Session Rules** | `declarativeNetRequest` Session Rules — werden beim Neustart automatisch gelöscht und beim Browser-Start wieder angewendet |
-| **Import / Export** | JSON-Backup und Wiederherstellung aller Regeln *(Premium)* |
+| **Import / Export** | JSON-Backup und Wiederherstellung aller Regeln *(Pro)* |
 
 ---
 
@@ -81,15 +81,15 @@ Aktiviere eine Regel mit dem Schalter im Side Panel. Der Hauptschalter oben stop
 
 ---
 
-## Kostenlos vs. Premium
+## Kostenlos vs. Pro
 
-| | Kostenlos | Premium |
+| | Kostenlos | Pro |
 |---|---|---|
 | Regeln | max. 5 | Unbegrenzt |
 | Header pro Regel | max. 5 | Unbegrenzt |
 | Domain-Matching | ✅ | ✅ |
 | Globale Regeln (leere URL) | ✅ | ✅ |
-| Import / Export | ❌ Nur Premium | ✅ |
+| Import / Export | ❌ Nur Pro | ✅ |
 | Voreinstellungen | ✅ | ✅ |
 
 ---

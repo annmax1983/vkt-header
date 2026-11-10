@@ -67,7 +67,7 @@ Enable a rule with its switch in the panel. The master switch at the top stops o
 | **Request tester** | Enter any URL and see which rules match it, which headers each rule would set, and which rule wins when priorities collide — before you browse |
 | **Toolbar badge** | The toolbar icon shows how many rules are currently active, at a glance |
 | **Migrate from ModHeader / Header Editor** | Import their exported JSON files — see [Migration import](#migrating-from-modheader--header-editor) |
-| **Import / Export** | JSON backup and restore of all rules *(Premium)* |
+| **Import / Export** | JSON backup and restore of all rules *(Pro)* |
 
 Enable a rule with its switch in the panel. The master switch at the top stops or resumes all rules at once. To check what a rule will actually do, open the **request tester** (🔍 in the panel header): it runs a URL through the same matching logic the extension uses, and shows every header the final request/response would carry.
 
@@ -97,9 +97,9 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 
 ---
 
-## Free vs Premium
+## Free vs Pro
 
-| | Free | Premium |
+| | Free | Pro |
 |---|---|---|
 | Rules | 5 max | Unlimited |
 | Headers per rule | 5 max | Unlimited |
@@ -107,7 +107,7 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 | Global rules (empty URL) | ✅ | ✅ |
 | Request tester · toolbar badge | ✅ | ✅ |
 | Migrate from ModHeader / Header Editor | ✅ (free quota) | ✅ |
-| Import / Export | ❌ Premium only | ✅ |
+| Import / Export | ❌ Pro only | ✅ |
 | Presets | ✅ | ✅ |
 
 ---
