@@ -67,7 +67,7 @@ Enable a rule with its switch in the panel. The master switch at the top stops o
 | **Request tester** | Enter any URL and see which rules match it, which headers each rule would set, and which rule wins when priorities collide — before you browse |
 | **Toolbar badge** | The toolbar icon shows how many rules are currently active, at a glance |
 | **Migrate from ModHeader / Header Editor** | Import their exported JSON files — see [Migration import](#migrating-from-modheader--header-editor) |
-| **Import / Export** | JSON backup and restore of all rules *(Pro)* |
+| **Export / Import** | Backup of all rules as plain JSON or as a passphrase-encrypted file (free to export; restoring a whole backup is Pro-only; a gzipped backup is accepted on import) |
 
 Enable a rule with its switch in the panel. The master switch at the top stops or resumes all rules at once. To check what a rule will actually do, open the **request tester** (🔍 in the panel header): it runs a URL through the same matching logic the extension uses, and shows every header the final request/response would carry.
 
@@ -101,14 +101,24 @@ vkt-header reads the export/backup JSON files of both ModHeader and Header Edito
 
 | | Free | Pro |
 |---|---|---|
-| Rules | 5 max | Unlimited |
-| Headers per rule | 5 max | Unlimited |
-| Domain matching | ✅ | ✅ |
+| Rules | 10 max | Unlimited |
+| Headers per rule | 10 max | Unlimited |
+| Domain / path / port / request-type matching | ✅ | ✅ |
 | Global rules (empty URL) | ✅ | ✅ |
+| Groups with a one-switch group toggle | ✅ | ✅ |
+| Create a rule from a pasted cURL command | ✅ | ✅ |
 | Request tester · toolbar badge | ✅ | ✅ |
 | Migrate from ModHeader / Header Editor | ✅ (free quota) | ✅ |
-| Import / Export | ❌ Pro only | ✅ |
+| Export all rules as JSON | ✅ | ✅ |
+| Import a JSON backup (replaces the whole set) | ❌ Pro only | ✅ |
+| Sync between browsers | ❌ Pro only | ✅ |
 | Presets | ✅ | ✅ |
+
+Sync uses the account the browser is already signed into — Chrome sync, or the Microsoft account in Edge — through `chrome.storage.sync`. There is no VKT Header account and no VKT Header server in that path: the browser moves the data, we never see it. The payload is gzipped before it is stored, so the browser's roughly 100 KB account quota holds several hundred rules (100 rules that each carry a distinct token measure 81 KB as JSON and 17 KB compressed); sets beyond that are better moved with the JSON export. Sync is off by default.
+
+**Encrypted backups.** The export panel offers two shapes. *Download JSON* is plain text: readable in any editor, diffable between versions, header values kept as-is. *Download encrypted* asks for a passphrase (8 characters minimum) and writes an AES-256-GCM envelope sealed with a PBKDF2-SHA256 key (310 000 iterations; salt and IV travel inside the file, so the format can be upgraded without breaking old backups). The passphrase never leaves the browser and is never stored anywhere.
+
+⚠️ **There is no recovery.** A forgotten passphrase means that file can never be opened again — not by us, not by anyone. Nothing is escrowed, nothing can be reset. Keep the passphrase somewhere you will still have it in six months, or export plain JSON to a drive you control.
 
 ---
 
@@ -183,7 +193,7 @@ Firefox therefore shows one permission less than Chrome / Edge in *Add-ons Manag
    Browser-protected headers (Host, Origin, etc.) cannot be modified by extensions. This is a browser security restriction, not a bug.
 
 4. **How do I transfer rules to another device?**
-   Open Settings → Export to download a JSON backup, then Import it on the other device.
+   With Pro, turn on **Settings → Sync**: rules then travel through the account your browser is already signed into (Chrome sync / the Microsoft account in Edge, via `chrome.storage.sync`) and never through our servers. Without Pro, or for a set too large for the browser's sync quota, use Export to download a JSON backup and Import it on the other device (Pro).
 
 5. **The homepage / first navigation doesn't show the header?**
    DNR rules don't apply to requests served from the browser cache. After enabling a rule, hard-refresh the page (Ctrl+Shift+R) or reopen it — the navigation request will then carry the header. Cached sub-resources behave the same way.
